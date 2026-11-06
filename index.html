@@ -180,23 +180,6 @@
 
     .report-viewer object { width: 100%; height: 100%; }
 
-    .presentation-viewer {
-      width: 100%;
-      height: 620px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      overflow: hidden;
-      background: #f4f4f4;
-      margin-bottom: 20px;
-    }
-
-    .presentation-viewer iframe {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
     .chip-feature {
       display: grid;
       grid-template-columns: 220px minmax(0, 1fr);
@@ -220,6 +203,25 @@
     .chip-feature h2 { margin: 0 0 8px; font-size: 24px; }
     .chip-feature p { margin: 0; color: #c6d9d1; }
     .chip-feature a { color: #9de0c8; }
+
+    .experience-heading {
+      display: grid;
+      grid-template-columns: 132px minmax(0, 1fr);
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .company-logo {
+      display: block;
+      width: 132px;
+      height: 100px;
+      padding: 8px;
+      object-fit: contain;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
 
     .document-actions {
       display: flex;
@@ -324,7 +326,7 @@
         <h3>Current Work</h3>
 
         <p>
-          As part of my master's thesis, I am currently working on a cache-coherent interconnect for the CVA6 RISC-V core. This is implemented with the AMBA Coherent Hub Interface
+          As part of my master's thesis, I am currently working on a cache-coherent interconnect for a multi-core CVA6 System. This is implemented with the AMBA Coherent Hub Interface
           (CHI), and will be released open source by the group upon completion of the project next summer, stay tuned!
         </p>
 
@@ -332,6 +334,28 @@
           <a href="https://iis-projects.ee.ethz.ch/index.php?title=A_Cache-Coherent_Interconnect_for_Multi-Cores_CVA6_System" target="_blank" rel="noopener">
             Read the project description ↗
           </a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="experience-heading">
+          <img class="company-logo" src="reports/enclustra.jpeg" alt="Enclustra FPGA/SoC Solutions logo">
+          <div>
+            <div class="meta">Hardware Engineering Intern · Oct. 2025 – Mar. 2026</div>
+            <h3>Enclustra GmbH — Innovation Lab</h3>
+          </div>
+        </div>
+
+        <p>
+          I developed and validated FPGA/SoC hardware, including platforms
+          based on AMD Versal devices. I also built Python and Altium tools to
+          automate schematic and netlist checks as well as component-database
+          workflows.
+        </p>
+
+        <div class="tags">
+          <span>FPGA / SoC</span><span>AMD Versal</span>
+          <span>Python</span><span>Altium</span>
         </div>
       </article>
 
@@ -383,19 +407,6 @@
               <p>PDF preview unavailable. <a href="reports/Lars_Kro%CC%88ger_Exploration%20of%20On-Chip%20Link%20Width%20in%20the%20Gwaihir%20SoC.pdf">Open the project report</a>.</p>
             </object>
           </div>
-        </details>
-        <details>
-          <summary>View the attention-kernel presentation online</summary>
-          <div class="presentation-viewer">
-            <iframe
-              src="https://ethz-my.sharepoint.com/:p:/r/personal/lkroeger_ethz_ch/Documents/SoCDAML_presentation_update.pptx?d=wa74cc81a538c4ec9b317bd5afe11c7d4&amp;csf=1&amp;web=1&amp;e=rHZvkG"
-              title="Attention-kernel and NoC link-width presentation"
-              loading="lazy"
-              allowfullscreen></iframe>
-          </div>
-          <p class="document-links">
-            Viewer unavailable? <a href="https://ethz-my.sharepoint.com/:p:/r/personal/lkroeger_ethz_ch/Documents/SoCDAML_presentation_update.pptx?d=wa74cc81a538c4ec9b317bd5afe11c7d4&amp;csf=1&amp;web=1&amp;e=rHZvkG" target="_blank" rel="noopener">Open the presentation in SharePoint ↗</a>
-          </p>
         </details>
       </article>
 
