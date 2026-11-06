@@ -343,13 +343,12 @@
         <p>
           How much can wider NoC links improve performance, and should the DMA
           data width within each core be decoupled from the NoC data width? I
-          investigated these questions on Picobello, a 16-core RISC-V SoC, by
-          varying the DMA and network-on-chip datapath widths.
+          investigated these questions on Gwaihir, a 16-core RISC-V SoC with a 2D-mesh NoC.
         </p>
 
         <p>
           I developed a parameterized AXI width adapter and a read
-          interleaver to reduce burst serialization, achieving approximately
+          interleaver int he memory controller to reduce burst serialization, achieving approximately
           twice the baseline performance on memory-bound benchmarks with
           1024-bit NoC links. I also evaluated area, timing, and routing
           limits in TSMC 7 nm.
@@ -425,9 +424,7 @@
           improved our graphics demo's performance by 1.75×.
           I also wrote the complete RTL-to-GDSII flow using Yosys and
           OpenROAD. The DMA supports autonomous memory and peripheral
-          transfers, while the SPI controller supports all four SPI modes
-          and clock rates up to 26 MHz. The resulting graphics demo ran
-          approximately 1.75× faster with DMA.
+          transfers, while the SPI controller supports all four SPI modes.
         </p>
 
         <div class="tags">
