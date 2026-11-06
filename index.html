@@ -180,6 +180,23 @@
 
     .report-viewer object { width: 100%; height: 100%; }
 
+    .presentation-viewer {
+      width: 100%;
+      height: 620px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+      background: #f4f4f4;
+      margin-bottom: 20px;
+    }
+
+    .presentation-viewer iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     .chip-feature {
       display: grid;
       grid-template-columns: 220px minmax(0, 1fr);
@@ -265,9 +282,8 @@
           <p>
             I'm a master's student in Electrical Engineering and Information
             Technology at ETH Zurich, interested in digital hardware design,
-            computer architecture, and memory systems. I like understanding
-            what limits a system's performance and improving it across the
-            hardware-software boundary.
+            computer architecture, and memory systems. All of my projects were completed in Prof. Luca Benini's lab,
+            giving me hands on experience with state of the art open-source as well as commericals tools and technology nodes.
           </p>
 
           <p>
@@ -297,22 +313,37 @@
         <div>
           <h2>From RTL to silicon</h2>
           <p>
-            A packaged chip from my VLSI work at ETH Zurich. I enjoy the full
-            path from an architectural question to verified RTL, layout, and
-            a physical device.
+            A packaged chip from my VLSI work at ETH Zurich, developed using open-source tools, taped out in the IHP 130nm tehcnology node.
             <a href="reports/VLSI2_compressed.pdf" target="_blank" rel="noopener">Read the report ↗</a>
           </p>
         </div>
       </div>
 
       <article class="project">
+        <div class="meta">Ongoing project</div>
+        <h3>Current Work</h3>
+
+        <p>
+          As part of my master's thesis, I am currently working on a cache-coherent interconnect for the CVA6 RISC-V core. This is implemented with the AMBA Coherent Hub Interface
+          (CHI), and will be released open source by the group upon completion of the project next summer, stay tuned!
+        </p>
+
+        <div class="document-actions">
+          <a href="https://iis-projects.ee.ethz.ch/index.php?title=A_Cache-Coherent_Interconnect_for_Multi-Cores_CVA6_System" target="_blank" rel="noopener">
+            Read the project description ↗
+          </a>
+        </div>
+      </article>
+
+      <article class="project">
         <div class="meta">Semester project · ETH Zurich · 2026</div>
         <h3>NoC Architecture and Link-Width Scaling</h3>
 
         <p>
-          How much can a manycore accelerator gain from wider on-chip
-          links? I investigated this question on Picobello, a 144-core
-          RISC-V SoC, by varying DMA and network-on-chip datapath widths.
+          How much can wider NoC links improve performance, and should the DMA
+          data width within each core be decoupled from the NoC data width? I
+          investigated these questions on Picobello, a 16-core RISC-V SoC, by
+          varying the DMA and network-on-chip datapath widths.
         </p>
 
         <p>
@@ -325,16 +356,38 @@
 
         <p>
           As part of the project, I optimized FlashAttention-2 decoding
-          using bank-aware memory placement and SIMD, achieving a
-          17.6× single-cluster compute speedup. The optimized kernel
-          demonstrated a further 1.8× speedup when widening the DMA
-          and NoC datapaths from 512 to 1024 bits.
+          using bank-aware memory placement and SIMD. I developed a
+          scaling-and-squaring approximation for Online Softmax that removes
+          the memory accesses required by a lookup-table implementation. This
+          made the Softmax computation SIMD-friendly for arbitrary vector
+          widths while keeping the kernel fully pipelineable, delivering a
+          17.6× single-cluster compute speedup.
+          Widening the DMA and NoC datapaths from 512 to 1024 bits provided a
+          further 1.8× speedup.
         </p>
 
         <div class="tags">
           <span>SystemVerilog</span><span>RISC-V</span><span>AXI / NoC</span>
           <span>Fusion Compiler</span><span>TSMC 7 nm</span>
         </div>
+
+        <div class="document-actions">
+          <a href="https://ethz-my.sharepoint.com/:p:/r/personal/lkroeger_ethz_ch/Documents/SoCDAML_presentation_update.pptx?d=wa74cc81a538c4ec9b317bd5afe11c7d4&amp;csf=1&amp;web=1&amp;e=rHZvkG" target="_blank" rel="noopener">View attention-kernel presentation ↗</a>
+          <a href="reports/SoCDAML_presentation_update.pptx" download>Download presentation ↓</a>
+        </div>
+        <details>
+          <summary>View the attention-kernel presentation online</summary>
+          <div class="presentation-viewer">
+            <iframe
+              src="https://ethz-my.sharepoint.com/:p:/r/personal/lkroeger_ethz_ch/Documents/SoCDAML_presentation_update.pptx?d=wa74cc81a538c4ec9b317bd5afe11c7d4&amp;csf=1&amp;web=1&amp;e=rHZvkG"
+              title="Attention-kernel and NoC link-width presentation"
+              loading="lazy"
+              allowfullscreen></iframe>
+          </div>
+          <p class="document-links">
+            Viewer unavailable? <a href="https://ethz-my.sharepoint.com/:p:/r/personal/lkroeger_ethz_ch/Documents/SoCDAML_presentation_update.pptx?d=wa74cc81a538c4ec9b317bd5afe11c7d4&amp;csf=1&amp;web=1&amp;e=rHZvkG" target="_blank" rel="noopener">Open the presentation in SharePoint ↗</a>
+          </p>
+        </details>
       </article>
 
       <article class="project">
@@ -365,7 +418,6 @@
 
         <div class="document-actions">
           <a href="reports/VLSI2_compressed.pdf" target="_blank" rel="noopener">Open full report ↗</a>
-          <a href="reports/SoCDAML_presentation_update.pptx" download>Download presentation ↓</a>
         </div>
         <details>
           <summary>Read the report in this page</summary>
