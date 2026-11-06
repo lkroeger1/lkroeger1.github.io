@@ -9,12 +9,14 @@
 
   <style>
     :root {
-      --bg: #faf9f6;
+      --bg: #f5f7f4;
       --surface: #ffffff;
-      --text: #242a30;
+      --text: #17211d;
       --muted: #626b73;
-      --accent: #215d51;
-      --line: #e1e3df;
+      --accent: #176b58;
+      --accent-light: #dceee7;
+      --line: #dce5df;
+      --dark: #18352e;
     }
 
     * { box-sizing: border-box; }
@@ -24,8 +26,7 @@
       margin: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont,
-                   "Segoe UI", sans-serif;
+      font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
       font-size: 16px;
       line-height: 1.75;
     }
@@ -66,6 +67,21 @@
     .nav-links a { font-size: 14px; text-decoration: none; }
 
     .intro { padding: 78px 0 58px; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 230px;
+      align-items: center;
+      gap: 52px;
+    }
+
+    .portrait {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 120px 120px 10px 10px;
+      box-shadow: 18px 18px 0 var(--accent-light);
+    }
 
     .eyebrow {
       color: var(--accent);
@@ -116,7 +132,8 @@
       padding: 30px;
       background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 12px;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(23, 55, 45, .05);
     }
 
     .project h3 { margin: 8px 0 14px; font-size: 22px; }
@@ -151,7 +168,7 @@
 
     .document-links { margin: 0 0 14px; font-size: 14px; }
 
-    iframe {
+    .report-viewer {
       display: block;
       width: 100%;
       height: 580px;
@@ -161,8 +178,42 @@
       margin-bottom: 20px;
     }
 
+    .report-viewer object { width: 100%; height: 100%; }
+
+    .chip-feature {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 28px;
+      align-items: center;
+      margin: 0 0 22px;
+      padding: 22px;
+      background: var(--dark);
+      color: #f3fbf7;
+      border-radius: 8px;
+    }
+
+    .chip-feature img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .chip-feature h2 { margin: 0 0 8px; font-size: 24px; }
+    .chip-feature p { margin: 0; color: #c6d9d1; }
+    .chip-feature a { color: #9de0c8; }
+
+    .document-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      margin: 0 0 14px;
+      font-size: 14px;
+    }
+
     .cv-section { padding: 52px 0 24px; }
-    .cv-section > iframe { margin-top: 24px; height: 780px; }
+    .cv-section > .report-viewer { margin-top: 24px; height: 780px; }
 
     footer {
       margin-top: 40px;
@@ -178,8 +229,12 @@
       .intro p { font-size: 16px; }
       .project { padding: 22px; }
       .project h3 { font-size: 20px; }
-      iframe { height: 420px; }
-      .cv-section > iframe { height: 520px; }
+      .hero { grid-template-columns: 1fr; gap: 28px; }
+      .portrait { width: min(230px, 70vw); }
+      .chip-feature { grid-template-columns: 1fr; }
+      .chip-feature img { max-width: 260px; }
+      .report-viewer { height: 420px; }
+      .cv-section > .report-viewer { height: 520px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -202,43 +257,54 @@
 
   <main class="container">
     <section class="intro" id="about">
-      <div class="eyebrow">Digital hardware · Computer architecture</div>
-      <h1>Hi, I'm Lars.</h1>
+      <div class="hero">
+        <div>
+          <div class="eyebrow">Digital hardware · Computer architecture</div>
+          <h1>Hi, I'm Lars.</h1>
 
-      <p>
-        I'm a master's student in Electrical Engineering and Information
-        Technology at ETH Zurich, interested in digital hardware design,
-        computer architecture, and memory systems. I enjoy understanding
-        what limits a system's performance and working across hardware
-        and software to improve it.
-      </p>
+          <p>
+            I'm a master's student in Electrical Engineering and Information
+            Technology at ETH Zurich, interested in digital hardware design,
+            computer architecture, and memory systems. I like understanding
+            what limits a system's performance and improving it across the
+            hardware-software boundary.
+          </p>
 
-      <p>
-        My projects have taken me from embedded machine learning on
-        nano-drones to RISC-V chip design, on-chip interconnects, and
-        attention kernels for manycore processors. Along the way, I've
-        studied abroad at UT Austin, worked in Enclustra's Innovation Lab,
-        and taught calculus and digital circuits at ETH.
-      </p>
+          <p>
+            My work spans RISC-V SoCs, on-chip interconnects, ASIC flows,
+            embedded machine learning, and attention kernels for manycore
+            processors.
+          </p>
 
-      <div class="links">
-        <a href="mailto:larskro.lk@gmail.com">Email me</a>
-        <a href="#projects">Explore my projects ↓</a>
-        <a href="reports/CV_Lars_Kroeger_no_info.pdf" target="_blank" rel="noopener">View CV ↗</a>
+          <div class="links">
+            <a href="mailto:larskro.lk@gmail.com">Email me</a>
+            <a href="#projects">Explore my projects ↓</a>
+            <a href="reports/CV_Lars_Kroeger_no_info.pdf" target="_blank" rel="noopener">View CV ↗</a>
+          </div>
+        </div>
+        <img class="portrait" src="reports/portrait.jpg" alt="Lars Kroeger beside a Swiss lake">
       </div>
     </section>
 
     <section id="projects">
       <h2 class="section-title">Selected projects</h2>
       <p class="section-intro">
-        A selection of my work, with reports and presentations.
+        Hardware systems, from architecture and RTL to physical implementation.
       </p>
 
-      <!--
-        Upload these files, or update the paths below:
-        reports/Lars_Kröger_Exploration of On-Chip Link Width in the Gwaihir SoC.pdf
-        reports/picobello-slides.pdf
-      -->
+      <div class="chip-feature">
+        <img src="reports/chip.jpeg" alt="Packaged RISC-V chip with the River logo">
+        <div>
+          <h2>From RTL to silicon</h2>
+          <p>
+            A packaged chip from my VLSI work at ETH Zurich. I enjoy the full
+            path from an architectural question to verified RTL, layout, and
+            a physical device.
+            <a href="reports/VLSI2_compressed.pdf" target="_blank" rel="noopener">Read the report ↗</a>
+          </p>
+        </div>
+      </div>
+
       <article class="project">
         <div class="meta">Semester project · ETH Zurich · 2026</div>
         <h3>NoC Architecture and Link-Width Scaling</h3>
@@ -269,40 +335,16 @@
           <span>SystemVerilog</span><span>RISC-V</span><span>AXI / NoC</span>
           <span>Fusion Compiler</span><span>TSMC 7 nm</span>
         </div>
-
-        <details>
-          <summary>Read the report</summary>
-          <p class="document-links">
-            <a href="reports/Lars_Kröger_Exploration of On-Chip Link Width in the Gwaihir SoC.pdf"
-               target="_blank" rel="noopener">Open report in a new tab ↗</a>
-          </p>
-          <iframe src="reports/Lars_Kröger_Exploration of On-Chip Link Width in the Gwaihir SoC.pdf"
-                  title="Picobello project report" loading="lazy"></iframe>
-        </details>
-
-        <details>
-          <summary>View the presentation</summary>
-          <p class="document-links">
-            <a href="reports/picobello-slides.pdf"
-               target="_blank" rel="noopener">Open slides in a new tab ↗</a>
-          </p>
-          <iframe src="reports/picobello-slides.pdf"
-                  title="Picobello presentation" loading="lazy"></iframe>
-        </details>
       </article>
 
-      <!--
-        reports/croc-report.pdf
-        reports/croc-slides.pdf
-      -->
       <article class="project">
-        <div class="meta">University project · ETH Zurich</div>
-        <h3>RISC-V SoC Design and ASIC Implementation</h3>
+        <div class="meta">VLSI II project · ETH Zurich</div>
+        <h3>Croc SoC: DMA Engine and SPI Peripheral</h3>
 
         <p>
           From RTL to working silicon: our team extended the Croc RISC-V
-          SoC and took it through ASIC implementation and first-silicon
-          bring-up.
+          SoC and took it through RTL verification, ASIC implementation,
+          and first-silicon bring-up.
         </p>
 
         <p>
@@ -310,8 +352,10 @@
           SPI controller. Overlapping computation with DMA transfers
           improved our graphics demo's performance by 1.75×.
           I also wrote the complete RTL-to-GDSII flow using Yosys and
-          OpenROAD. Our team was one of five selected for fabrication,
-          followed by successful first-silicon bring-up.
+          OpenROAD. The DMA supports autonomous memory and peripheral
+          transfers, while the SPI controller supports all four SPI modes
+          and clock rates up to 26 MHz. The resulting graphics demo ran
+          approximately 1.75× faster with DMA.
         </p>
 
         <div class="tags">
@@ -319,108 +363,21 @@
           <span>Yosys</span><span>OpenROAD</span>
         </div>
 
-        <details>
-          <summary>Read the report</summary>
-          <p class="document-links">
-            <a href="reports/croc-report.pdf"
-               target="_blank" rel="noopener">Open report in a new tab ↗</a>
-          </p>
-          <iframe src="reports/croc-report.pdf"
-                  title="Croc SoC project report" loading="lazy"></iframe>
-        </details>
-
-        <details>
-          <summary>View the presentation</summary>
-          <p class="document-links">
-            <a href="reports/croc-slides.pdf"
-               target="_blank" rel="noopener">Open slides in a new tab ↗</a>
-          </p>
-          <iframe src="reports/croc-slides.pdf"
-                  title="Croc SoC presentation" loading="lazy"></iframe>
-        </details>
-      </article>
-
-      <!--
-        reports/bachelor-thesis.pdf
-        reports/bachelor-slides.pdf
-      -->
-      <article class="project">
-        <div class="meta">Bachelor's thesis · ETH Zurich</div>
-        <h3>Federated Continual Learning on Nano-Drone Swarms</h3>
-
-        <p>
-          My bachelor's thesis explored how nano-drones can learn locally
-          and exchange model updates within the constraints of a small,
-          low-power embedded system.
-        </p>
-
-        <p>
-          I implemented multicore DNN training and inference on GAP9,
-          with ultra-wideband model synchronization across drones.
-          Local training achieved 178 ms and 4.3 mJ per epoch in
-          low-power mode. I was the first author of the resulting work
-          presented at RISC-V Summit Europe 2025.
-        </p>
-
-        <div class="tags">
-          <span>GAP9</span><span>Embedded ML</span><span>RISC-V</span>
-          <span>Federated learning</span><span>UWB</span>
+        <div class="document-actions">
+          <a href="reports/VLSI2_compressed.pdf" target="_blank" rel="noopener">Open full report ↗</a>
+          <a href="reports/SoCDAML_presentation_update.pptx" download>Download presentation ↓</a>
         </div>
-
         <details>
-          <summary>Read the thesis</summary>
-          <p class="document-links">
-            <a href="reports/bachelor-thesis.pdf"
-               target="_blank" rel="noopener">Open thesis in a new tab ↗</a>
-          </p>
-          <iframe src="reports/bachelor-thesis.pdf"
-                  title="Bachelor's thesis" loading="lazy"></iframe>
-        </details>
-
-        <details>
-          <summary>View the presentation</summary>
-          <p class="document-links">
-            <a href="reports/bachelor-slides.pdf"
-               target="_blank" rel="noopener">Open slides in a new tab ↗</a>
-          </p>
-          <iframe src="reports/bachelor-slides.pdf"
-                  title="Bachelor's thesis presentation" loading="lazy"></iframe>
-        </details>
-      </article>
-
-      <!--
-        reports/standard-cells-report.pdf
-        Remove or rename this document section if you prefer a paper link.
-      -->
-      <article class="project">
-        <div class="meta">University project · ETH Zurich</div>
-        <h3>Standard Cell Library Design and Characterization</h3>
-
-        <p>
-          Contributed standard cells to the open-source EZ130 8T library
-          in IHP 130 nm, gaining experience with the building blocks
-          underlying digital ASIC implementation. I am also a co-author
-          of the associated paper.
-        </p>
-
-        <div class="tags">
-          <span>Standard cells</span><span>IHP 130 nm</span>
-          <span>Cadence</span><span>Synopsys</span>
-        </div>
-
-        <details>
-          <summary>Read the report</summary>
-          <p class="document-links">
-            <a href="reports/standard-cells-report.pdf"
-               target="_blank" rel="noopener">Open report in a new tab ↗</a>
-          </p>
-          <iframe src="reports/standard-cells-report.pdf"
-                  title="Standard cell library report" loading="lazy"></iframe>
+          <summary>Read the report in this page</summary>
+          <div class="report-viewer">
+            <object data="reports/VLSI2_compressed.pdf" type="application/pdf">
+              <p>PDF preview unavailable. <a href="reports/VLSI2_compressed.pdf">Open the report</a>.</p>
+            </object>
+          </div>
         </details>
       </article>
     </section>
 
-    <!-- Upload your public, phone-free CV as reports/CV_Lars_Kroeger_no_info.pdf -->
     <section class="cv-section" id="cv">
       <h2 class="section-title">Curriculum vitae</h2>
       <p class="section-intro">
@@ -431,8 +388,11 @@
         Open CV as PDF ↗
       </a>
 
-      <iframe src="reports/CV_Lars_Kroeger_no_info.pdf"
-              title="Lars Kroeger's curriculum vitae" loading="lazy"></iframe>
+      <div class="report-viewer">
+        <object data="reports/CV_Lars_Kroeger_no_info.pdf" type="application/pdf">
+          <p>PDF preview unavailable. <a href="reports/CV_Lars_Kroeger_no_info.pdf">Open the CV</a>.</p>
+        </object>
+      </div>
     </section>
 
     <footer>
